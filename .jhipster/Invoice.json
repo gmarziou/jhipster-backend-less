@@ -1,0 +1,34 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "date",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "Date",
+            "fieldNameUnderscored": "date"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "amount",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Amount",
+            "fieldNameUnderscored": "amount"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "status",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Status",
+            "fieldNameUnderscored": "status"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": true,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150221231723"
+}

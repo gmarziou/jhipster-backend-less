@@ -1,0 +1,21 @@
+{
+    "jhipsterApp": {
+        "invoice" : {
+            "home": {
+                "title": "Invoices",
+                "createLabel": "Créer un nouveau Invoice",
+                "createOrEditLabel": "Créer ou éditer un Invoice"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Invoice {{ id }} ?"
+            },
+            "detail": {
+                "title": "Invoice"
+            },
+            "date": "Date",
+            "amount": "Amount",
+            "status": "Status"
+        }
+    }
+}
+
