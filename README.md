@@ -10,7 +10,7 @@ Benefits are:
   * faster development cycle
   * easier communication with customers as you can zip the webapp folder and send it to them for review
   * easier collaboration with designers
-  * less coupling between resources (REST api) and entities (JPA, database)
+  * less coupling between resources (REST API) and entities (JPA, database)
 
 In this example, only a part of the backend API is simulated in [src/main/webapp/scripts/app/stubs/httpBackendStub.js](src/main/webapp/scripts/app/stubs/httpBackendStub.js) but enough to authenticate with user or admin accounts and to use the CRUD view of an entity.
 
