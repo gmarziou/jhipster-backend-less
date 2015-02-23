@@ -19,6 +19,10 @@ I'm still investigating why but so far it seems that:
   * It could be a [problem for Windows users](http://www.browsersync.io/docs/#windows-users)
   * The way Gruntfile.js is configured in jhipster would proxy any request to the jhipster application running on port 8080
 
-So, I back-ported the livereload feature of 2.2.0 in Gruntfile.js and binded it to a new grunt task: serve-client.
+So, I back-ported the livereload feature of 2.2.0 in Gruntfile.js and binded it to a new grunt task: serve-client but for longer term, we would need a configuration with both a static server for all assets (js, css, images, fonts, html, i18n files) and a proxy for server-side (api, ...). I don't know yet if it's possible in BrowserSync grunt plugin.
+
+
+
+
 
 
