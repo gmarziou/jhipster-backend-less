@@ -1,8 +1,20 @@
 // Generated on 2015-02-21 using generator-jhipster 2.3.0
 'use strict';
 var fs = require('fs');
-var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
-
+var httpProxy = require('http-proxy');
+ 
+var proxy = httpProxy.createProxyServer({
+   target: 'http://localhost:8080/'
+ });
+ 
+var proxyMiddleware = function(req, res, next) {
+   if (req.url.indexOf('api') != -1) {
+     proxy.web(req, res);
+   } else {
+     next();
+   }
+};
+ 
 var parseString = require('xml2js').parseString;
 // Returns the second occurence of the version number
 var parseVersionFromPomXml = function() {
@@ -42,24 +54,12 @@ module.exports = function (grunt) {
             styles: {
                 files: ['src/main/webapp/assets/styles/**/*.css']
             },
-            livereload: {
-                options: {
-                    livereload: 35729
-                },
-                files: [
-                    'src/main/webapp/**/*.html',
-                    'src/main/webapp/**/*.json',
-                    '{.tmp/,}src/main/webapp/assets/styles/**/*.css',
-                    '{.tmp/,}src/main/webapp/scripts/**/*.js',
-                    'src/main/webapp/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
-                ]
-            }
         },
         autoprefixer: {
         // not used since Uglify task does autoprefixer,
         //    options: ['last 1 version'],
         //    dist: {
-        //        files: [{
+        //        files: z            
         //            expand: true,
         //            cwd: '.tmp/styles/',
         //            src: '**/*.css',
@@ -99,6 +99,7 @@ module.exports = function (grunt) {
                     src : [
                         'src/main/webapp/**/*.html',
                         'src/main/webapp/**/*.json',
+                        'src/main/webapp/bower_components/**/*.{js,css}',
                         '{.tmp/,}src/main/webapp/assets/styles/**/*.css',
                         '{.tmp/,}src/main/webapp/scripts/**/*.js',
                         'src/main/webapp/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
@@ -107,30 +108,9 @@ module.exports = function (grunt) {
             },
             options: {
                 watchTask: true,
-                proxy: "localhost:8080"
-            }
-        },
-        connect: {
-            options: {
-                port: 9000,
-                // Change this to 'localhost' to deny access to the server from outside.
-                hostname: '0.0.0.0',
-                livereload: 35729
-            },
-            livereload: {
-                options: {
-                    open: true,
-                    base: [
-                        '.tmp',
-                        'src/main/webapp'
-                    ],
-                    middleware: function (connect) {
-                        return [
-                            proxySnippet,
-                            connect.static('.tmp'),
-                            connect.static('src/main/webapp')
-                        ];
-                    }
+                server: {
+                   baseDir: [".tmp", "src/main/webapp"],
+                   middleware: proxyMiddleware
                 }
             }
         },
