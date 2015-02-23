@@ -1,19 +1,6 @@
 // Generated on 2015-02-21 using generator-jhipster 2.3.0
 'use strict';
 var fs = require('fs');
-var httpProxy = require('http-proxy');
- 
-var proxy = httpProxy.createProxyServer({
-   target: 'http://localhost:8080/'
- });
- 
-var proxyMiddleware = function(req, res, next) {
-   if (req.url.indexOf('api') != -1) {
-     proxy.web(req, res);
-   } else {
-     next();
-   }
-};
  
 var parseString = require('xml2js').parseString;
 // Returns the second occurence of the version number
