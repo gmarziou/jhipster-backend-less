@@ -1,7 +1,7 @@
 jhipster backend-less development
 =================================
 
-This is an example on how to configure a jhipster application so that frontend can be develop without the backend.
+This is an example on how to configure a jhipster application so that frontend can be developed without the backend.
 
 It is well explained [here](https://ruhul.wordpress.com/2014/11/03/backendless-development-with-angularjs/).
 
