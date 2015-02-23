@@ -104,15 +104,30 @@ module.exports = function (grunt) {
                         '{.tmp/,}src/main/webapp/scripts/**/*.js',
                         'src/main/webapp/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
                     ]
+                },
+                options: {
+                    watchTask: true,
+                    server: {
+                       baseDir: [".tmp", "src/main/webapp"]
+                    }
                 }
             },
-            options: {
-                watchTask: true,
-                server: {
-                   baseDir: [".tmp", "src/main/webapp"],
-                   middleware: proxyMiddleware
+            backendLess: {
+                bsFiles: {
+                    src : [
+                        'src/main/webapp/**/*.html',
+                        'src/main/webapp/**/*.json',
+                        'src/main/webapp/bower_components/**/*.{js,css}',
+                        '{.tmp/,}src/main/webapp/assets/styles/**/*.css',
+                        '{.tmp/,}src/main/webapp/scripts/**/*.js',
+                        'src/main/webapp/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                    proxy: "localhost:8080"
                 }
-            }
+            },
         },
         clean: {
             dist: {
@@ -413,7 +428,7 @@ module.exports = function (grunt) {
         'wiredep',
         'ngconstant:dev',
         'concurrent:server',
-        'browserSync',
+        'browserSync:dev',
         'watch'
     ]);
 
@@ -422,7 +437,7 @@ module.exports = function (grunt) {
         'wiredep',
         'ngconstant:dev',
         'concurrent:server',
-        'connect:livereload',
+        'browserSync:backendLess',
         'watch'
     ]);
 
