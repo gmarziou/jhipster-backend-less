@@ -9,7 +9,8 @@
         admin: {id: 1, login: 'admin', password: 'admin', email: 'admin@example.com', roles: ['ROLE_USER', 'ROLE_ADMIN']}
     };
 
-    var currentUser;
+    // Initialize with default value so that you don't have to login again when browser reloads
+    var currentUser = accounts['user'];
 
     // sample resource
     var invoices = [
