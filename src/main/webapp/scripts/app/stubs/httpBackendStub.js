@@ -146,7 +146,7 @@ angular.module('jhipsterApp')
         function updateOne(id, dataItem, data) {
             // find the item that matches that id
             var match = null;
-            for (var i=0; i < games.length; i++) {
+            for (var i=0; i < data.length; i++) {
                 if(data[i].id == id) {
                     match = data[i];
                     break;
